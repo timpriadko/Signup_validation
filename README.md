@@ -1,0 +1,1 @@
+# Syntech_Test_task_Artem_Priadko
