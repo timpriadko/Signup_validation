@@ -126,7 +126,8 @@ submitBtn.addEventListener("click", (e) => {
         birthDateLabel.classList.remove("is-red");
         step2.classList.add("hidden");
         step3.classList.remove("hidden");
-        document.querySelector(".btn-wrapper").classList.add("hidden");
+        document.querySelector(".btn-wrapper").style.display = "none";
+        document.querySelector("p").innerText = "Thank you!";
 
         progressBar.style.width = "100%";
     };
@@ -143,3 +144,45 @@ backBtn.addEventListener("click", (e) => {
 
     progressBar.style.width = "33.33%";
 });
+
+// Console data in JSON
+
+// UI
+let goToDashboardBtn = document.getElementById("goToDashboardBtn");
+
+
+
+goToDashboardBtn.addEventListener("click", (e) => {
+    function getRadioValue() {
+        if (document.getElementById('option-one').checked) {
+            rate_value = document.getElementById('option-one').value;
+            return rate_value;
+        } else if (document.getElementById('option-two').checked) {
+            rate_value = document.getElementById('option-two').value;
+            return rate_value;
+        } else if (document.getElementById('option-three').checked) {
+            rate_value = document.getElementById('option-three').value;
+            return rate_value;
+        }
+    };
+
+    function dateOfBirth() {
+        return dayOfBirth.value + "." + monthOfBirth.value + "." + yearOfBirth.value;
+    }
+
+
+    function consoleUserData() {
+
+        let user_data = {
+            email: document.getElementById("inputEmail").value,
+            password: document.getElementById("inputPassword").value,
+            date_of_birth: dateOfBirth(),
+            gender: getRadioValue(),
+            how_hear_about_us: document.querySelector(".custom-select").value
+        }
+
+        return JSON.stringify(user_data);
+    }
+
+    console.log(consoleUserData());
+})
