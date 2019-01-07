@@ -159,8 +159,25 @@ p {
 /* Custom select */
 
 .custom-select {
-    background: url(/img/down-arrow.png) no-repeat right .75rem center;
     cursor: pointer;
+    background: transparent;
+}
+
+.select-wrapper {
+    position: relative;
+}
+
+.select-arrow {
+    position: absolute;
+    border-right: 2px solid #4a90e2;
+    border-bottom: 2px solid #4a90e2;
+    width: 15px;
+    height: 15px;
+    top: 56px;
+    right: 4%;
+    transform: rotate(45deg);
+    background-color: white;
+    z-index: -1;
 }
 
 
