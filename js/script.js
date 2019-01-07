@@ -69,8 +69,6 @@ let birthDateLabel = document.getElementById("birthDateLabel");
 
 
 submitBtn.addEventListener("click", (e) => {
-    e.preventDefault;
-
 
     // DATE OF BIRTH validation
     function dateOfBirth() {
@@ -100,7 +98,7 @@ submitBtn.addEventListener("click", (e) => {
         } else return false;
     }
 
-    if (dateIsValid(date) === false) {
+    if (dateIsValid(date) === false && date.length !== 2) {
         birthDateLabel.classList.add("is-invalid");
     } else {
         birthDateLabel.classList.remove("is-invalid");
@@ -118,7 +116,10 @@ submitBtn.addEventListener("click", (e) => {
     let setDate = new Date();
     setDate.setFullYear(mydate.getFullYear() + age, month - 1, day);
 
-    if (dateIsValid(date) === true && (currdate - setDate) < 0) {
+    if (date.length === 2) {
+        birthDateLabel.innerText = "DATE OF BIRTH IS REQUIRED";
+        birthDateLabel.classList.add("is-red");
+    } else if (dateIsValid(date) === true && (currdate - setDate) < 0) {
         birthDateLabel.innerText = "YOU SHOULD BE 18 YEARS OLD";
         birthDateLabel.classList.add("is-red");
     } else {
